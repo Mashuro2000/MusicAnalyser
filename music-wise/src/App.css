@@ -1,9 +1,21 @@
-/* Search wrapper */
-
-.search-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.App {
+  background-color: #ede8d0;
+  width: 100vw;
   height: 100vh;
+  align-items: center;
 }
 
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 7px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  border-radius: 9999px;
+  background-color: #AAAAAA;
+}
+
+::-webkit-scrollbar-corner {
+  background: rgba(0,0,0,0);
+}
