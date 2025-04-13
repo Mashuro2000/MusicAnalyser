@@ -15,18 +15,21 @@
   overflow: hidden;
   display: flex;
   align-items: center;
+  background-color: white;
 }
 
 .search-result img {
-  max-width: 12%;
-  padding-right: 2vh;
+  max-width: 11%;
+  margin-right: 2vw;
   border-radius: 10px;
   border-width: 100px;
+  background-color: white;
 }
 
 .search-result:hover {
-  background-color: #efefef;
+  background-color: #efefef !important;
 }
+
 
 .input-wrapper {
   width: 100%;
@@ -56,11 +59,16 @@ input:focus {
 
 #search-icon {
   color: black;
+  background-color: white;
 }
 
-#link {
+.link {
   text-decoration: none;
   color: black;
+}
+
+.link:hover {
+  background-color: #efefef !important;
 }
 
 .search-result-thumbnail img {
@@ -87,6 +95,11 @@ input:focus {
 
 .search-result-text {
   p {
+    background-color: white;
     font-style: italic;
   }
+  h4 {
+    background-color: white;
+  }
 }
+

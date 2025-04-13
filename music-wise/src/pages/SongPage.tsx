@@ -1,45 +1,58 @@
 import { useEffect, useState } from "react";
 import "../styling/SongPage.css";
 import axios from "axios";
-import { useLocation } from "react-router";
+import { useParams } from 'react-router-dom';
 
 const serverUrl = 'http://localhost:3000';
 
 export const SongPage = () => {
-    const [loading, setLoading] = useState(true);
-    const [lyrics, setLyrics] = useState<any>(null); // replace `any` with your data type
 
-    const location = useLocation();
-    const songData = location.state
+    const [loading, setLoading] = useState(true)
+    const [song, setSong] = useState<any>(null)
 
-    console.log(songData)
+    const { songId } = useParams()
 
+    const requestUrl = `${serverUrl}/genius/getlyrics/${songId}`
 
     useEffect(() => {
-        // Simulate fetching data (replace with your actual API call)
-
-        // setTimeout(() => {
-        //     setLyrics({ title: "Song Title", artist: "Artist Name" });
-        //     setLoading(false);
-        // }, 400);
+        console.log("getting song lyrics and higlights")
+        axios.get(requestUrl)
+            .then((res) => {
+                console.log(res.data)
+                setSong(res.data);
+                setLoading(false)
+            })
+            .catch((errorMessage) => {
+                setLoading(false)
+                console.log(errorMessage);
+            })
     }, []);
 
     return (
         <div className="song">
             {loading ? (
-                <div className="loader">
-                    <span className="stroke"></span>
-                    <span className="stroke"></span>
-                    <span className="stroke"></span>
-                    <span className="stroke"></span>
-                    <span className="stroke"></span>
-                    <span className="stroke"></span>
-                    <span className="stroke"></span>
+                <div className="loading-screen">
+                    <div className="loader">
+                        <span className="stroke"></span>
+                        <span className="stroke"></span>
+                        <span className="stroke"></span>
+                        <span className="stroke"></span>
+                        <span className="stroke"></span>
+                        <span className="stroke"></span>
+                        <span className="stroke"></span>
+                    </div>
+                    <div className="loader-text">
+                        <p>Highlighting Ryhmes...</p>
+                    </div>
                 </div>
+
             ) : (
                 <div className="song-content">
-                    <h1>{songData.title}</h1>
-                    <h2>{songData.artist}</h2>
+                    <h1>{song.songData.title}</h1>
+                    <h2>{song.songData.artist_names}</h2>
+                    <div style={{ whiteSpace: 'pre-line' }}>
+                        <p>{song.lyrics}</p>
+                    </div>
                 </div>
             )}
         </div>

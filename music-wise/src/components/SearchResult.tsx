@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom';
 export const SearchResult = (result: any) => {
 
     let song = result.result
-    console.log(song)
+    console.log(song.id)
     return (
         <Link 
-            id='link'
-            to={`/${song.id}`}
-            state={song}>
+            className='link'
+            to={`/${song.id}`}>
             <div className="search-result">
                 <img src={song.song_art_image_thumbnail_url}/>
                 
