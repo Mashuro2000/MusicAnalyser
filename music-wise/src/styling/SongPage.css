@@ -10,7 +10,7 @@
     display: flex;
     height: 20vh;
     align-items: center;
-    justify-content: center;      
+    justify-content: center;
 }
 
 .loader .stroke {
@@ -25,32 +25,76 @@
 }
 
 @keyframes animate {
-    50%{
+    50% {
         height: 20%;
     }
-    100%{
+
+    100% {
         height: 100%;
     }
 }
 
-.stroke:nth-child(1){
+.stroke:nth-child(1) {
     animation-delay: 0s;
 }
-.stroke:nth-child(2){
+
+.stroke:nth-child(2) {
     animation-delay: 0.3s;
 }
-.stroke:nth-child(3){
+
+.stroke:nth-child(3) {
     animation-delay: 0.6s;
 }
-.stroke:nth-child(4){
+
+.stroke:nth-child(4) {
     animation-delay: 0.9s;
 }
-.stroke:nth-child(5){
+
+.stroke:nth-child(5) {
     animation-delay: 0.6s;
 }
-.stroke:nth-child(6){
+
+.stroke:nth-child(6) {
     animation-delay: 0.3s;
 }
-.stroke:nth-child(7){
+
+.stroke:nth-child(7) {
     animation-delay: 0s;
+}
+
+.song-content {
+    margin-left: 35vw;
+}
+
+.card {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 24px;
+    margin-top: 1vh;
+    border: 1px solid #e2e2e2;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.section-header {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-family: monospace;
+}
+
+.verse {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.line {
+    line-height: 1.6;
 }

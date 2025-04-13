@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../styling/SongPage.css";
 import axios from "axios";
 import { useParams } from 'react-router-dom';
+import LyricHighlighter from "../components/LyricHighlighter";
 
 const serverUrl = 'http://localhost:3000';
 
@@ -14,18 +15,25 @@ export const SongPage = () => {
 
     const requestUrl = `${serverUrl}/genius/getlyrics/${songId}`
 
+    // useEffect(() => {
+    //     console.log("getting song lyrics and higlights")
+    //     axios.get(requestUrl)
+    //         .then((res) => {
+    //             console.log(res.data)
+    //             setSong(res.data);
+    //             setLoading(false)
+    //         })
+    //         .catch((errorMessage) => {
+    //             setLoading(false)
+    //             console.log(errorMessage);
+    //         })
+    // }, []);
+
     useEffect(() => {
-        console.log("getting song lyrics and higlights")
-        axios.get(requestUrl)
-            .then((res) => {
-                console.log(res.data)
-                setSong(res.data);
-                setLoading(false)
-            })
-            .catch((errorMessage) => {
-                setLoading(false)
-                console.log(errorMessage);
-            })
+        // Simulate fetching data (replace with your actual API call)
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
     }, []);
 
     return (
@@ -47,13 +55,7 @@ export const SongPage = () => {
                 </div>
 
             ) : (
-                <div className="song-content">
-                    <h1>{song.songData.title}</h1>
-                    <h2>{song.songData.artist_names}</h2>
-                    <div style={{ whiteSpace: 'pre-line' }}>
-                        <p>{song.lyrics}</p>
-                    </div>
-                </div>
+                <LyricHighlighter/>
             )}
         </div>
     );
