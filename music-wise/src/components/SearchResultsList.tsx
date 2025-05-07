@@ -1,11 +1,16 @@
+import { SongSearchResult } from '../interfaces/interfaces'
 import {SearchResult} from './SearchResult' 
 
-export const SearchResultsList = ({results}: any) => {
+interface Props {
+    results: SongSearchResult[];
+}
+
+export const SearchResultsList = ({results}: Props) => {
 
     return (
         <div className="results-list">
-            {results.map((result: any, id: any) => {
-                return <SearchResult key={id} result={result.result}/>
+            {results.map((result: SongSearchResult, id: any) => {
+                return <SearchResult key={id} result={result}/>
             })}
         </div>
     )

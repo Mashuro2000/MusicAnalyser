@@ -1,19 +1,22 @@
 import { Link } from 'react-router-dom';
+import { SongSearchResult } from '../interfaces/interfaces';
 
-export const SearchResult = (result: any) => {
+interface Props {
+    result: SongSearchResult;
+}
 
-    let song = result.result
-    console.log(song.id)
+export const SearchResult = ({result}: Props) => {
+    
     return (
         <Link 
             className='link'
-            to={`/${song.id}`}>
+            to={`/songLyrics/${result.id}`}>
             <div className="search-result">
-                <img src={song.song_art_image_thumbnail_url}/>
+                <img src={result.albumArt}/>
                 
                 <div className='search-result-text'>
-                    <h4>{song.title}</h4>
-                    <p>{song.artist_names}</p>
+                    <h4>{result.title}</h4>
+                    <p>{result.artistsNames}</p>
                 </div>
             </div>
         </Link>

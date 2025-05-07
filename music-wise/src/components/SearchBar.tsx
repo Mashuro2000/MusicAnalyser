@@ -1,9 +1,10 @@
 import { FaSearch } from "react-icons/fa";
 import { useRef, useState } from "react";
 import axios from "axios";
+import { SongSearchResult } from "../interfaces/interfaces";
 
-// Server Url
-const serverUrl = 'http://localhost:3000';
+const serverUrl = import.meta.env.VITE_API_URL;
+console.log(serverUrl);
 
 export const SearchBar = ({ setResults }: any) => {
     const [input, setInput] = useState("");
@@ -30,7 +31,17 @@ export const SearchBar = ({ setResults }: any) => {
                 cancelToken: cancelTokenRef.current.token,
             })
             .then((response) => {
-                setResults(response.data);
+                const searchResults: SongSearchResult[] = response.data.map((val: any): SongSearchResult => {
+                    return {
+                        id: val.id,
+                        title: val.title,
+                        albumArt: val.albumArt,
+                        geniusUrl: val.geniusUrl,
+                        artistsNames: val.artistsNames
+                    };
+                });
+
+                setResults(searchResults);
             })
             .catch((error) => {
                 if (axios.isCancel(error)) {
