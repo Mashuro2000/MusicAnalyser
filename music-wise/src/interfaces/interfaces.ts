@@ -28,6 +28,11 @@ export interface Segment {
     color: string | null;
 }
 
+export interface SpotifyAccessToken {
+    access_token: string;
+    created_at: Date;
+}
+
 export type Line = Segment[];
 export type Verse = Line[];
 export type LyricsData = Record<string, Verse>;

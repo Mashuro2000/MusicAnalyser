@@ -4,6 +4,10 @@ body {
     width: 100%;
 }
 
+html {
+    background-color: #ede8d0;
+}
+
 .loader-text {
     display: flex;
     align-items: center;
@@ -78,11 +82,19 @@ body {
     min-height: calc(100vh - 4rem);
     width: 100%;
     box-sizing: border-box; /* This ensures padding is included in width calculation */
+    background-color: #ede8d0;
+}
+
+.sidebar-container {
+    position: sticky;
+    top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 }
 
 .song-info {
-    position: sticky;
-    top: 2rem;
+    position: static;
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -91,6 +103,7 @@ body {
     background: white;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
 }
 
 .song-art-container {
@@ -188,6 +201,16 @@ body {
     height: auto;
 }
 
+.spotify-player-container {
+    /* position: sticky; */
+    /* top: calc(2rem + 100%); */
+    margin-top: 1rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
 /* Make the page responsive for smaller screens */
 @media (max-width: 1024px) {
     .song-page-container {
@@ -198,5 +221,14 @@ body {
     .song-info {
         position: relative;
         top: 0;
+    }
+
+    .spotify-player-container {
+        position: relative;
+        top: 0;
+    }
+
+    .song-art-container {
+        max-width: 50%;
     }
 }

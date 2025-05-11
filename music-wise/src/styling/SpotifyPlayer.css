@@ -1,0 +1,25 @@
+.spotify-player {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #1DB954;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spotify-player button {
+    background-color: white;
+    color: #1DB954;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.spotify-player button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+} 
