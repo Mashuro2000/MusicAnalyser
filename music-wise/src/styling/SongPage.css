@@ -170,10 +170,12 @@ html {
     box-shadow: none;
     width: 100%;
     box-sizing: border-box;
+    border-color: white;
 }
 
 .card-content {
     gap: 2rem;
+    border-color: white !important;
 }
 
 .section-header {

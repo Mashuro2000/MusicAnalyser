@@ -17,5 +17,23 @@
 }
 
 ::-webkit-scrollbar-corner {
-  background:#ede8d0;
+  background:#000000;
+}
+
+.nav-bar {
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 15px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  width: 69.8%;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.github-icon {
+  max-width: 15%;
+}
+
+.nav-link {
+  color: black !important;
 }

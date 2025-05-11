@@ -13,9 +13,13 @@ export const Search = () => {
 
     useEffect(() => {
         async function getSpotifyToken() {
-            const response = await fetch(`${serverUrl}/spotify/getAccessToken`);
-            const data = await response.json();
-            setToken(data.access_token as SpotifyAccessToken);
+            try {
+                const response = await fetch(`${serverUrl}/spotify/getAccessToken`);
+                const data = await response.json();
+                setToken(data.access_token as SpotifyAccessToken);
+            } catch (error) {
+                console.log("Connection to Spotify failed", error);
+            }
         }
 
         getSpotifyToken();

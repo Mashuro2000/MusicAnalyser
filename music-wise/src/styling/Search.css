@@ -88,9 +88,11 @@ input:focus {
   p {
     background-color: white;
     font-style: italic;
+    margin-bottom: 0px;
   }
   h4 {
     background-color: white;
+    margin-bottom: 0px;
   }
 }
 
@@ -110,4 +112,9 @@ input:focus {
 
 #login-text {
   margin-top: 1rem;
+}
+
+.search-input {
+  margin-left: 10px;
+  font-size: 1.1rem;
 }

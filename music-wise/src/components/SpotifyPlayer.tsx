@@ -3,6 +3,7 @@ import { LyricSongData, SpotifyAccessToken } from '../interfaces/interfaces';
 import axios from 'axios';
 import '../styling/SpotifyPlayer.css';
 
+const serverUrl = import.meta.env.VITE_API_URL;
 
 interface Props {
     song: LyricSongData;
@@ -24,9 +25,8 @@ export const SpotifyPlayer = ({ song, token }: Props) => {
 
     useEffect(() => {
         // Initialize Spotify Web Playback SDK
-        if (!token || (new Date().getTime() - new Date(token.created_at).getTime() > 3600000)) {
+        if (!token.access_token || (new Date().getTime() - new Date(token.created_at).getTime() > 3600000)) {
             setHasToken(false);
-            console.log("no token")
             return;
         };
 
@@ -119,7 +119,9 @@ export const SpotifyPlayer = ({ song, token }: Props) => {
     if (!hasToken) {
         return (
             <div className="spotify-player">
-                <p>Login with Spotify to play songs</p>
+                <a href={`${serverUrl}/spotify/login`}>
+                    <button>Login with Spotify</button>
+                </a>
             </div>
         );
     }
