@@ -42,7 +42,14 @@ npm start
 ## Technologies Used
 
 - React.js
-- [Add other technologies used in your project]
+- TypeScript
+- Bootstrap
+- Node.js
+- Express.js
+- PostgreSQL
+- Spotify Web API
+- Genius API
+- OpenAI API
 
 ## Contributing
 
