@@ -1,7 +1,7 @@
 import './App.css'
 import { Search } from './pages/Search'
 import { SongPage } from './pages/SongPage';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { NotFound } from './pages/NotFound';
 import { NavBar } from './components/NavBar';
 import { About } from './pages/About';
