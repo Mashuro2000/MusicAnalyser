@@ -81,7 +81,8 @@ html {
     gap: 2rem;
     min-height: calc(100vh - 4rem);
     width: 100%;
-    box-sizing: border-box; /* This ensures padding is included in width calculation */
+    box-sizing: border-box;
+    /* This ensures padding is included in width calculation */
     background-color: #ede8d0;
 }
 
@@ -159,7 +160,8 @@ html {
     height: fit-content;
     width: 100%;
     box-sizing: border-box;
-    overflow-x: hidden; /* Prevent horizontal scroll in lyrics */
+    overflow-x: hidden;
+    /* Prevent horizontal scroll in lyrics */
 }
 
 .card {
@@ -194,7 +196,8 @@ html {
     line-height: 1.8;
     font-size: 1.1rem;
     color: #333;
-    word-wrap: break-word; /* Ensure long words don't cause overflow */
+    word-wrap: break-word;
+    /* Ensure long words don't cause overflow */
     overflow-wrap: break-word;
 }
 
@@ -233,4 +236,54 @@ html {
     .song-art-container {
         max-width: 50%;
     }
+}
+
+.loader1 {
+    width: 85px;
+    height: 25px;
+    --g1: conic-gradient(from 90deg at left 3px top 3px, #0000 90deg, #fff 0);
+    --g2: conic-gradient(from -90deg at bottom 3px right 3px, #0000 90deg, #fff 0);
+    background: var(--g1), var(--g1), var(--g1), var(--g2), var(--g2), var(--g2);
+    background-position: left, center, right;
+    background-repeat: no-repeat;
+    animation: l8 1s infinite;
+}
+
+@keyframes l8 {
+    0% {
+        background-size: 25px 100%, 25px 100%, 25px 100%
+    }
+
+    20% {
+        background-size: 25px 50%, 25px 100%, 25px 100%
+    }
+
+    40% {
+        background-size: 25px 50%, 25px 50%, 25px 100%
+    }
+
+    60% {
+        background-size: 25px 100%, 25px 50%, 25px 50%
+    }
+
+    80% {
+        background-size: 25px 100%, 25px 100%, 25px 50%
+    }
+
+    100% {
+        background-size: 25px 100%, 25px 100%, 25px 100%
+    }
+}
+
+
+
+.analyzing-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    z-index: 1000;
 }
