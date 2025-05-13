@@ -68,7 +68,7 @@ input:focus {
 }
 
 .search-bar-container {
-  padding-top: 9vh;
+  padding-top: 8vh;
   width: 40%;
   margin: auto;
   display: flex;
@@ -81,7 +81,7 @@ input:focus {
   max-width: fit-content;
   margin-left: auto;
   margin-right: auto; 
-  padding-top: 12vh;
+  padding-top: 8vh;
 }
 
 .search-result-text {
@@ -117,4 +117,109 @@ input:focus {
 .search-input {
   margin-left: 10px;
   font-size: 1.1rem;
+}
+
+.popular-songs-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.popular-songs-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.popular-songs-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+.popular-songs-list .link {
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.popular-song-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: white;
+  transition: transform 0.2s ease;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.popular-song-item img {
+  width: 10%;
+}
+
+.popular-song-item > div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+}
+
+.popular-song-item .visits-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+}
+
+.popular-song-item .visits-container img {
+  width: 20px;
+  height: 20px;
+}
+
+.popular-song-item:hover {
+  transform: scale(1.02);
+}
+
+.popular-song-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.popular-song-item h3 {
+  margin: 0;
+  font-size: 1.1em;
+}
+
+.popular-song-item p {
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+/* HTML: <div class="loader"></div> */
+.most-searched-loader {
+  width: 85px;
+  height: 25px;
+  --g1:conic-gradient(from  90deg at left   3px top   3px,#0000 90deg,#000000 0);
+  --g2:conic-gradient(from -90deg at bottom 3px right 3px,#0000 90deg,#000000 0);
+  background:var(--g1),var(--g1),var(--g1), var(--g2),var(--g2),var(--g2);
+  background-position: left,center,right;
+  background-repeat: no-repeat;
+  animation: l8 1s infinite;
+
+  margin: 0 auto;
+}
+@keyframes l8 {
+  0%   {background-size:25px 100%,25px 100%,25px 100%}
+  20%  {background-size:25px 50% ,25px 100%,25px 100%}
+  40%  {background-size:25px 50% ,25px 50% ,25px 100%}
+  60%  {background-size:25px 100%,25px 50% ,25px 50% }
+  80%  {background-size:25px 100%,25px 100%,25px 50% }
+  100% {background-size:25px 100%,25px 100%,25px 100%}
 }

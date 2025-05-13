@@ -4,7 +4,6 @@ import axios from "axios";
 import { SongSearchResult } from "../interfaces/interfaces";
 
 const serverUrl = import.meta.env.VITE_API_URL;
-console.log(serverUrl);
 
 export const SearchBar = ({ setResults }: any) => {
     const [input, setInput] = useState("");

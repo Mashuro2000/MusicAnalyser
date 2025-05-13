@@ -30,7 +30,7 @@ export interface Segment {
 
 export interface SpotifyAccessToken {
     access_token: string;
-    created_at: Date;
+    created_at: string | Date;
 }
 
 export type Line = Segment[];
