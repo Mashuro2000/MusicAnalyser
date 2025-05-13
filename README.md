@@ -4,8 +4,10 @@ A sophisticated React web application that analyzes song lyrics to identify rhym
 
 A live version can be viewed on: https://music-analyser-peach.vercel.app/
 
-![Capture](https://github.com/user-attachments/assets/6b0e9c2b-a14e-476b-9615-1d06c0e7e9a1)
-![songl lyrics](https://github.com/user-attachments/assets/f45d7e05-764b-4588-b485-cf9584353d3d)
+![homepage](https://github.com/user-attachments/assets/303a97b9-e70d-412d-9c76-e8dce76143f7)
+![lyrics](https://github.com/user-attachments/assets/63443e94-7bb8-44d1-8419-b6960dc58660)
+![about page](https://github.com/user-attachments/assets/4961d601-209a-4be5-a59c-55c2bc60a4f4)
+
 
 ## Features
 
@@ -13,7 +15,7 @@ A live version can be viewed on: https://music-analyser-peach.vercel.app/
 - **Rhyme Scheme Detection**: Automatically identifies and highlights rhyme patterns in songs
 - **Spotify Account Integration**: Allows you to play the song you are currently viewing
 - **User-Friendly Interface**: Clean and intuitive design for easy navigation
-- **Real-time Analysis**: Get instant results as you input lyrics
+- **Most Viewed Songs Availavle** Shows the most searched songs that people have searched
 
 ## Installation
 
