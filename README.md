@@ -2,6 +2,8 @@
 
 A sophisticated React web application that analyzes song lyrics to identify rhyme schemes and interpret the deeper meaning behind songs. This tool helps music enthusiasts, songwriters, and students better understand the structural and thematic elements of songs.
 
+A live version can be viewed on: https://music-analyser-peach.vercel.app/
+
 ![Capture](https://github.com/user-attachments/assets/6b0e9c2b-a14e-476b-9615-1d06c0e7e9a1)
 ![songl lyrics](https://github.com/user-attachments/assets/f45d7e05-764b-4588-b485-cf9584353d3d)
 
