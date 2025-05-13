@@ -9,7 +9,7 @@ A sophisticated React web application that analyzes song lyrics to identify rhym
 
 - **Lyric Analysis**: Upload or input song lyrics for detailed analysis
 - **Rhyme Scheme Detection**: Automatically identifies and highlights rhyme patterns in songs
-- **Meaning Interpretation**: Provides insights into the song's themes, metaphors, and underlying messages
+- **Spotify Account Integration**: Allows you to play the song you are currently viewing
 - **User-Friendly Interface**: Clean and intuitive design for easy navigation
 - **Real-time Analysis**: Get instant results as you input lyrics
 
