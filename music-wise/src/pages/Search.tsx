@@ -5,7 +5,7 @@ import { SearchBar } from '../components/SearchBar';
 import { SearchResultsList } from '../components/SearchResultsList';
 import { Login } from "../components/Login";
 import { SpotifyAccessToken } from "../interfaces/interfaces";
-import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 import fire_icon from "../assets/fire_icon.png";
 import { Link } from "react-router-dom";
 
