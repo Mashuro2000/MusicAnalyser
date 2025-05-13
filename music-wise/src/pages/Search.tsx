@@ -8,45 +8,31 @@ import { SpotifyAccessToken } from "../interfaces/interfaces";
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 import fire_icon from "../assets/fire_icon.png";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const serverUrl = import.meta.env.VITE_API_URL;
 const queryClient = new QueryClient();
 
 const SearchContent = () => {
     const [results, setResults] = useState([]);
-    const [token, setToken] = useState<SpotifyAccessToken>({ access_token: "", created_at: new Date() });
+    const [token, setToken] = useState<SpotifyAccessToken | null>(null);
+    const [hasToken, setHasToken] = useState(false);
 
     useEffect(() => {
-        async function getSpotifyToken() {
-            try {
-                const response = await fetch(`${serverUrl}/spotify/getAccessToken`);
-                const data = await response.json();
-                console.log("Token data received:", data);
-                if (data && typeof data === 'object' && 'access_token' in data) {
-                    console.log("Setting token with data:", data);
-                    setToken(data as SpotifyAccessToken);
-                } else {
-                    console.log("Invalid token data received:", data);
-                    setToken({ access_token: "", created_at: new Date() });
-                }
-            } catch (error) {
-                console.log("Connection to Spotify failed", error);
-                setToken({ access_token: "", created_at: new Date() });
-            }
+        async function getToken() {
+            const response = await axios.get(`${serverUrl}/spotify/getAccessToken`);
+            setToken(response.data.access_token as SpotifyAccessToken);
         }
-        getSpotifyToken();
-    }, [])
+        getToken();
+    }, []);
 
-    // Monitor token changes
     useEffect(() => {
-        console.log("Token state updated:", token);
-        if (token) {
-            console.log("Token object:", token);
-            console.log("Token access_token:", token.access_token);
-            console.log("Token access_token type:", typeof token.access_token);
-            console.log("Token access_token length:", token.access_token.length);
-        }
-        console.log("Login condition evaluation:", token.access_token === "");
+        if (!token || !token.access_token || (new Date().getTime() - new Date(token.created_at).getTime() > 3600000)) {
+            setHasToken(false);
+            return;
+        };
+
+        setHasToken(true);
     }, [token]);
 
     const { isLoading, data: mostSearchedData } = useQuery({
@@ -95,7 +81,7 @@ const SearchContent = () => {
             </div>
 
             <div className="login-container">
-                {token.access_token === "" || token.access_token === null ? <Login /> : <p>Logged in with Spotify</p>}
+                {!hasToken ? <Login /> : <p>Logged in with Spotify</p>}
             </div>
         </div>
     )
