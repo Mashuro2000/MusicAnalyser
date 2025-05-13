@@ -38,13 +38,12 @@ npm start
 ## Usage
 
 1. Open the application in your web browser
-2. Enter or paste song lyrics into the input field
-3. Click "Analyze" to process the lyrics
+2. Enter the song you wish to see
+3. Select the desired song in the search result list to process the lyrics
 4. View the detailed analysis including:
    - Rhyme scheme visualization
-   - Theme interpretation
    - Literary devices used
-   - Song structure breakdown
+   - Option for Spotify listening
 
 ## Technologies Used
 
