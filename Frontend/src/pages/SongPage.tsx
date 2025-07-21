@@ -6,6 +6,24 @@ import { LyricHighlighter } from "../components/LyricHighlighter";
 import { LyricSongData, SpotifyAccessToken, Line, AnalysedVerse } from "../../../common/interfaces";
 import { SpotifyPlayer } from "../components/SpotifyPlayer";
 
+const mergeVerses = (prev: AnalysedVerse[], incoming: AnalysedVerse[]): AnalysedVerse[] => {
+    const result = [...prev];
+    incoming.forEach((verse, idx) => {
+        if (!result[idx]) {
+            result[idx] = { section: verse.section, lines: [] };
+        }
+        const existingLines = result[idx].lines.length;
+        const newLines = verse.lines.slice(existingLines);
+        if (newLines.length > 0) {
+            result[idx] = {
+                section: verse.section,
+                lines: [...result[idx].lines, ...newLines],
+            };
+        }
+    });
+    return result;
+};
+
 const serverUrl = import.meta.env.VITE_API_URL;
 
 export const SongPage = () => {
@@ -25,66 +43,22 @@ export const SongPage = () => {
         getToken();
     }, []);
 
-    useEffect(() => {
-        if (!song?.analysedLyrics?.sections) {
-            setVisibleVerses([]);
-            return;
-        }
-
-        const allLines: { verseIndex: number; line: Line }[] = [];
-        song.analysedLyrics.sections.forEach((verse, verseIndex) => {
-            verse.lines.forEach(line => {
-                allLines.push({ verseIndex, line });
-            });
-        });
-
-        const initialVerses = song.analysedLyrics.sections.map(v => ({
-            ...v,
-            lines: [],
-        }));
-        setVisibleVerses(initialVerses);
-
-        let lineIndex = 0;
-        const intervalId = setInterval(() => {
-            if (lineIndex >= allLines.length) {
-                clearInterval(intervalId);
-                return;
-            }
-
-            const { verseIndex, line } = allLines[lineIndex];
-            setVisibleVerses(prev => {
-                const newVerses = [...prev];
-                newVerses[verseIndex] = {
-                    ...newVerses[verseIndex],
-                    lines: [...newVerses[verseIndex].lines, line],
-                };
-                return newVerses;
-            });
-
-            lineIndex++;
-        }, 100); // Adjust delay as needed
-
-        return () => clearInterval(intervalId);
-
-    }, [song?.analysedLyrics]);
 
     useEffect(() => {
         const eventSource = new EventSource(`${serverUrl}/genius/getlyrics/${songId}`);
 
         eventSource.onmessage = (event) => {
-            console.log(event.data);
             if (event.data === '[DONE]') {
                 eventSource.close();
-                setLoading(false);
                 return;
             }
 
             try {
                 const data = JSON.parse(event.data);
-                console.log(data);
-                
+
                 if (data.type === 'basic') {
                     setSong(data.data);
+                    setVisibleVerses([]);
                     setLoading(false);
                 } else if (data.type === 'analysis') {
                     const receivedData = data.data as Partial<LyricSongData>;
@@ -98,16 +72,20 @@ export const SongPage = () => {
                             }))
                         };
                     }
-                    
+
                     setSong(prevSong => {
                         if (!prevSong) {
                             return receivedData as LyricSongData;
                         }
                         return {
                             ...prevSong,
-                            analysedLyrics: receivedData.analysedLyrics,
+                            ...(receivedData as Partial<LyricSongData>),
                         };
                     });
+
+                    if (receivedData.analysedLyrics) {
+                        setVisibleVerses(prev => mergeVerses(prev, receivedData.analysedLyrics!.sections));
+                    }
 
                     setIsAnalyzing(false);
                     setLoading(false);
