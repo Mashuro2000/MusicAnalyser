@@ -1,14 +1,13 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { SearchBar } from "./SearchBar";
 import { useState, useEffect, useRef } from "react";
 import { SearchResultsList } from "./SearchResultsList";
-import { SongSearchResult } from "../interfaces/interfaces";
+import { SongSearchResult } from "../../../common/interfaces";
 
 export const NavBar: React.FC = () => {
     const [results, setResults] = useState<SongSearchResult[]>([]);
     const [showResults, setShowResults] = useState(false);
-    const navigate = useNavigate();
     const searchContainerRef = useRef<HTMLDivElement>(null);
 
     const handleResultClick = () => {

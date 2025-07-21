@@ -4,7 +4,7 @@ import { VaraText } from "../components/VaraText";
 import { SearchBar } from '../components/SearchBar';
 import { SearchResultsList } from '../components/SearchResultsList';
 import { Login } from "../components/Login";
-import { SpotifyAccessToken, SongSearchResult } from "../interfaces/interfaces";
+import { SpotifyAccessToken, SongSearchResult } from "../../../common/interfaces";
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 import fire_icon from "../assets/fire_icon.png";
 import { Link } from "react-router-dom";

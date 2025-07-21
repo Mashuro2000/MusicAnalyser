@@ -1,7 +1,7 @@
 import { FaSearch } from "react-icons/fa";
 import { useRef, useState } from "react";
 import axios from "axios";
-import { SongSearchResult } from "../interfaces/interfaces";
+import { SongSearchResult } from "../../../common/interfaces";
 
 const serverUrl = import.meta.env.VITE_API_URL;
 

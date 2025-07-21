@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { motion } from "framer-motion";
 import "../styling/SongPage.css";
-import { LyricsData, Line, Segment, AnalysedVerse } from "../../../common/interfaces";
+import { LyricsData, Line, Segment } from "../../../common/interfaces";
 
 /* ----------  Spacing helper --------------------------------------------- */
 /**

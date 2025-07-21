@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { SongSearchResult } from '../interfaces/interfaces';
+import { SongSearchResult } from '../../../common/interfaces';
 
 interface Props {
     result: SongSearchResult;

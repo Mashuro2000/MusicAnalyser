@@ -3,7 +3,7 @@ import "../styling/SongPage.css";
 import axios from "axios";
 import { useParams } from 'react-router-dom';
 import { LyricHighlighter } from "../components/LyricHighlighter";
-import { LyricSongData, SpotifyAccessToken, LyricsData, Line, AnalysedVerse } from "../../../common/interfaces";
+import { LyricSongData, SpotifyAccessToken, Line, AnalysedVerse } from "../../../common/interfaces";
 import { SpotifyPlayer } from "../components/SpotifyPlayer";
 
 const serverUrl = import.meta.env.VITE_API_URL;

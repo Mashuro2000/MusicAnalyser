@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { LyricSongData, SpotifyAccessToken } from '../interfaces/interfaces';
+import { LyricSongData, SpotifyAccessToken } from '../../../common/interfaces';
 import axios from 'axios';
 import '../styling/SpotifyPlayer.css';
 

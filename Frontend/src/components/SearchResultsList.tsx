@@ -1,4 +1,4 @@
-import { SongSearchResult } from '../interfaces/interfaces'
+import { SongSearchResult } from '../../../common/interfaces'
 import { SearchResult } from './SearchResult' 
 
 interface Props {
