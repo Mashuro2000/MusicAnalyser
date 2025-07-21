@@ -18,6 +18,7 @@ export const VaraText = ({ text }: { text: string }) => {
             "https://raw.githubusercontent.com/akzhy/Vara/master/fonts/Parisienne/Parisienne.json",
             [
                 {
+                    color: "white",
                     text: text,
                     fontSize: 50,
                     strokeWidth: 1.3,

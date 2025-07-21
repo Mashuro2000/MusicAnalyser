@@ -1,9 +1,9 @@
 .results-list {
   width: 100%;
-  background-color: white;
+  background-color: #1e1e1e;
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 8px #ddd;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   margin-top: 1rem;
   max-height: 300px;
@@ -15,7 +15,12 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-  background-color: white;
+  background-color: #1e1e1e;
+  transition: background-color 0.2s ease;
+}
+
+.search-result:hover {
+  background-color: #2a2a2a;
 }
 
 .search-result img {
@@ -23,7 +28,7 @@
   margin-right: 2vw;
   border-radius: 10px;
   border-width: 100px;
-  background-color: white;
+  background-color: transparent;
 }
 
 .input-wrapper {
@@ -32,8 +37,8 @@
   border: none;
   border-radius: 10px;
   padding: 0 15px;
-  box-shadow: 0px 0px 8px #ddd;
-  background-color: white;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  background-color: #1e1e1e;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,6 +51,11 @@ input {
   font-size: 1.25rem;
   width: 100%;
   margin-left: 5px;
+  color: #e0e0e0;
+}
+
+input::placeholder {
+  color: #888;
 }
 
 input:focus {
@@ -53,13 +63,13 @@ input:focus {
 }
 
 #search-icon {
-  color: black;
-  background-color: white;
+  color: #e0e0e0;
+  background-color: transparent;
 }
 
 .link {
   text-decoration: none;
-  color: black;
+  color: #e0e0e0;
 }
 
 .search-result-thumbnail img {
@@ -86,13 +96,15 @@ input:focus {
 
 .search-result-text {
   p {
-    background-color: white;
+    background-color: transparent;
     font-style: italic;
     margin-bottom: 0px;
+    color: #888;
   }
   h4 {
-    background-color: white;
+    background-color: transparent;
     margin-bottom: 0px;
+    color: #e0e0e0;
   }
 }
 
@@ -112,6 +124,7 @@ input:focus {
 
 #login-text {
   margin-top: 1rem;
+  color: #e0e0e0;
 }
 
 .search-input {
@@ -129,6 +142,7 @@ input:focus {
 .popular-songs-container h2 {
   text-align: center;
   margin-bottom: 20px;
+  color: #e0e0e0;
 }
 
 .popular-songs-list {
@@ -152,21 +166,18 @@ input:focus {
   gap: 15px;
   padding: 10px;
   border-radius: 8px;
-  background-color: white;
-  transition: transform 0.2s ease;
+  background-color: #1e1e1e;
+  transition: all 0.2s ease;
   justify-content: space-between;
   box-sizing: border-box;
 }
 
-.popular-song-item img {
-  width: 10%;
-}
-
 .popular-song-item > div {
   display: flex;
-  align-items: center;
-  gap: 15px;
+  flex-direction: column;
+  justify-content: center;
   flex: 1;
+  min-width: 0; /* Prevents flex item from overflowing */
 }
 
 .popular-song-item .visits-container {
@@ -174,6 +185,7 @@ input:focus {
   align-items: center;
   gap: 5px;
   margin-left: auto;
+  white-space: nowrap;
 }
 
 .popular-song-item .visits-container img {
@@ -181,38 +193,47 @@ input:focus {
   height: 20px;
 }
 
-.popular-song-item:hover {
-  transform: scale(1.02);
-}
-
 .popular-song-item img {
   width: 60px;
   height: 60px;
   object-fit: cover;
   border-radius: 4px;
+  flex-shrink: 0;
 }
 
 .popular-song-item h3 {
   margin: 0;
   font-size: 1.1em;
+  color: #e0e0e0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .popular-song-item p {
   margin: 5px 0;
   font-size: 1em;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.popular-song-item:hover {
+  transform: scale(1.02);
+  background-color: #2a2a2a;
 }
 
 /* HTML: <div class="loader"></div> */
 .most-searched-loader {
   width: 85px;
   height: 25px;
-  --g1:conic-gradient(from  90deg at left   3px top   3px,#0000 90deg,#000000 0);
-  --g2:conic-gradient(from -90deg at bottom 3px right 3px,#0000 90deg,#000000 0);
+  --g1:conic-gradient(from  90deg at left   3px top   3px,#0000 90deg,#1DB954 0);
+  --g2:conic-gradient(from -90deg at bottom 3px right 3px,#0000 90deg,#1DB954 0);
   background:var(--g1),var(--g1),var(--g1), var(--g2),var(--g2),var(--g2);
   background-position: left,center,right;
   background-repeat: no-repeat;
   animation: l8 1s infinite;
-
   margin: 0 auto;
 }
 @keyframes l8 {

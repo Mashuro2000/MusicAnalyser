@@ -1,0 +1,123 @@
+.App {
+  background-color: #121212;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 7px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  border-radius: 9999px;
+  background-color: #333333;
+}
+
+::-webkit-scrollbar-corner {
+  background: #121212;
+}
+
+.nav-bar {
+  background-color: #1e1e1e;
+  opacity: 0.95;
+  border-radius: 15px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  width: 69.8%;
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 0.5rem 1rem;
+  position: relative;
+  z-index: 9999;
+}
+
+.github-icon {
+  max-width: 15%;
+}
+
+.nav-link {
+  color: #e0e0e0 !important;
+  margin: 0 1rem;
+}
+
+.nav-link:hover {
+  color: #1DB954 !important;
+}
+
+.about-container {
+  background: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  margin-top: 100px;
+  height: fit-content;
+  padding: 2.5rem;
+  width: 45%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin-top: 7vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-content {
+  margin-top: 1.5vh;
+  height: fit-content;
+  color: #e0e0e0;
+}
+
+.search-container {
+  position: relative;
+  width: 300px;
+  z-index: 9999;
+}
+
+.navbar-search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  margin-top: 0.5rem;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-search-results .results-list {
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+}
+
+.navbar-search-results .search-result {
+  padding: 0.75rem;
+  border-bottom: 1px solid #333;
+  background-color: #1e1e1e;
+}
+
+.navbar-search-results .search-result:last-child {
+  border-bottom: none;
+}
+
+.navbar-search-results .search-result:hover {
+  background-color: #2a2a2a;
+}
+
+@media (max-width: 768px) {
+  .search-container {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .navbar-search-results {
+    position: fixed;
+    top: auto;
+    left: 1rem;
+    right: 1rem;
+    margin-top: 0.5rem;
+  }
+}

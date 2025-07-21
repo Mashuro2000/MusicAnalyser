@@ -56,6 +56,12 @@ export const SpotifyPlayer = ({ song, token }: Props) => {
                 console.log('Device ID has gone offline', device_id);
             });
 
+            player.addListener('player_state_changed', (state: any) => {
+                if (state) {
+                    setIsPlaying(!state.paused);
+                }
+            });
+
             player.setName("MusicWise Player").then(() => {
                 console.log('Player name updated!');
             });
@@ -101,6 +107,11 @@ export const SpotifyPlayer = ({ song, token }: Props) => {
                 }
             ).then(() => {
                 setIsPlaying(true);
+                // Add playing class to album art
+                const albumArt = document.querySelector('.song-art');
+                if (albumArt) {
+                    albumArt.classList.add('playing');
+                }
             }).catch((error) => {
                 console.error('Error playing song:', error);
             });
@@ -113,6 +124,11 @@ export const SpotifyPlayer = ({ song, token }: Props) => {
         if (player) {
             player.pause();
             setIsPlaying(false);
+            // Remove playing class from album art
+            const albumArt = document.querySelector('.song-art');
+            if (albumArt) {
+                albumArt.classList.remove('playing');
+            }
         }
     };
 
@@ -132,7 +148,5 @@ export const SpotifyPlayer = ({ song, token }: Props) => {
                 {isPlaying ? 'Pause' : 'Play on Spotify'}
             </button>
         </div>
-
-        
     );
 }; 

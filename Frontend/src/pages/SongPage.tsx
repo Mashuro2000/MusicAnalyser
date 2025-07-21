@@ -3,15 +3,16 @@ import "../styling/SongPage.css";
 import axios from "axios";
 import { useParams } from 'react-router-dom';
 import { LyricHighlighter } from "../components/LyricHighlighter";
-import { LyricSongData, SpotifyAccessToken } from "../interfaces/interfaces";
+import { LyricSongData, SpotifyAccessToken, LyricsData, Line, AnalysedVerse } from "../../../common/interfaces";
 import { SpotifyPlayer } from "../components/SpotifyPlayer";
+
 const serverUrl = import.meta.env.VITE_API_URL;
 
 export const SongPage = () => {
     const [loading, setLoading] = useState(true);
     const [song, setSong] = useState<LyricSongData | undefined>(undefined);
-    const [analysedLyrics, setAnalysedLyrics] = useState<any>(null);
     const [isAnalyzing, setIsAnalyzing] = useState(true);
+    const [visibleVerses, setVisibleVerses] = useState<AnalysedVerse[]>([]);
 
     const { songId } = useParams();
     const [token, setToken] = useState<SpotifyAccessToken | null>(null);
@@ -23,6 +24,49 @@ export const SongPage = () => {
         }
         getToken();
     }, []);
+
+    useEffect(() => {
+        if (!song?.analysedLyrics?.sections) {
+            setVisibleVerses([]);
+            return;
+        }
+
+        const allLines: { verseIndex: number; line: Line }[] = [];
+        song.analysedLyrics.sections.forEach((verse, verseIndex) => {
+            verse.lines.forEach(line => {
+                allLines.push({ verseIndex, line });
+            });
+        });
+
+        const initialVerses = song.analysedLyrics.sections.map(v => ({
+            ...v,
+            lines: [],
+        }));
+        setVisibleVerses(initialVerses);
+
+        let lineIndex = 0;
+        const intervalId = setInterval(() => {
+            if (lineIndex >= allLines.length) {
+                clearInterval(intervalId);
+                return;
+            }
+
+            const { verseIndex, line } = allLines[lineIndex];
+            setVisibleVerses(prev => {
+                const newVerses = [...prev];
+                newVerses[verseIndex] = {
+                    ...newVerses[verseIndex],
+                    lines: [...newVerses[verseIndex].lines, line],
+                };
+                return newVerses;
+            });
+
+            lineIndex++;
+        }, 100); // Adjust delay as needed
+
+        return () => clearInterval(intervalId);
+
+    }, [song?.analysedLyrics]);
 
     useEffect(() => {
         const eventSource = new EventSource(`${serverUrl}/genius/getlyrics/${songId}`);
@@ -43,21 +87,28 @@ export const SongPage = () => {
                     setSong(data.data);
                     setLoading(false);
                 } else if (data.type === 'analysis') {
-                    // If we receive analysis data and don't have song data yet,
-                    // it means this is a direct database response
-                    if (!song) {
-                        setSong({
-                            id: data.data.id,
-                            lyrics: data.data.lyrics,
-                            fullTitle: data.data.fullTitle,
-                            title: data.data.title,
-                            releaseDate: data.data.releaseDate,
-                            songArt: data.data.songArt,
-                            artists: data.data.artists,
-                            allArtists: data.data.allArtists
-                        });
+                    const receivedData = data.data as Partial<LyricSongData>;
+
+                    // This is a migration step to handle the old data format.
+                    if (receivedData.analysedLyrics && !Array.isArray(receivedData.analysedLyrics.sections)) {
+                        receivedData.analysedLyrics = {
+                            sections: Object.entries(receivedData.analysedLyrics.sections).map(([section, lines]) => ({
+                                section,
+                                lines: lines as Line[]
+                            }))
+                        };
                     }
-                    setAnalysedLyrics(data.data.analysedLyrics || data.data);
+                    
+                    setSong(prevSong => {
+                        if (!prevSong) {
+                            return receivedData as LyricSongData;
+                        }
+                        return {
+                            ...prevSong,
+                            analysedLyrics: receivedData.analysedLyrics,
+                        };
+                    });
+
                     setIsAnalyzing(false);
                     setLoading(false);
                 }
@@ -75,7 +126,7 @@ export const SongPage = () => {
         return () => {
             eventSource.close();
         };
-    }, [songId, song]);
+    }, []);
 
     if (loading || !song) {
         return (
@@ -124,7 +175,7 @@ export const SongPage = () => {
                     </div>
                 ) : null}
                 <LyricHighlighter 
-                    data={analysedLyrics || {}} 
+                    data={{ sections: visibleVerses }}
                     plainLyrics={song.lyrics}
                     isAnalyzing={isAnalyzing}
                 />

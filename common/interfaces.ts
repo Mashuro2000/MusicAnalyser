@@ -1,3 +1,4 @@
+
 export interface SongSearchResult {
     id: string;
     title: string;
@@ -9,6 +10,17 @@ export interface SongSearchResult {
 export interface Segment {
     text: string;
     color: string | null;
+}
+
+export type Line = Segment[];
+
+export interface AnalysedVerse {
+    lines: Line[];
+    section: string;
+}
+
+export interface LyricsData {
+    sections: AnalysedVerse[];
 }
 
 export interface LyricSongData {
@@ -23,16 +35,13 @@ export interface LyricSongData {
     analysedLyrics?: LyricsData;
 }
 
-export interface Segment {
-    text: string;
-    color: string | null;
-}
-
 export interface SpotifyAccessToken {
     access_token: string;
     created_at: string | Date;
 }
 
-export type Line = Segment[];
-export type Verse = Line[];
-export type LyricsData = Record<string, Verse>;
+export interface GetSongOptions {
+    title: string;
+    optimiseQuery?: boolean;
+    authHeader?: boolean;
+} 

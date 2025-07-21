@@ -5,7 +5,12 @@ import { SongSearchResult } from "../interfaces/interfaces";
 
 const serverUrl = import.meta.env.VITE_API_URL;
 
-export const SearchBar = ({ setResults }: any) => {
+interface Props {
+    setResults: (results: SongSearchResult[]) => void;
+    onFocus?: () => void;
+}
+
+export const SearchBar = ({ setResults, onFocus }: Props) => {
     const [input, setInput] = useState("");
     const cancelTokenRef = useRef<ReturnType<typeof axios.CancelToken.source> | null>(null);
     const debounceTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -62,7 +67,7 @@ export const SearchBar = ({ setResults }: any) => {
         // Set new debounce timer
         debounceTimeoutRef.current = setTimeout(() => {
             fetchSongs(value);
-        }, 400); // Adjust delay as needed (e.g., 300–500ms)
+        }, 400);
     };
 
     return (
@@ -73,6 +78,7 @@ export const SearchBar = ({ setResults }: any) => {
                 placeholder="Search a song..."
                 value={input}
                 onChange={(e) => handleChange(e.target.value)}
+                onFocus={onFocus}
             />
         </div>
     );

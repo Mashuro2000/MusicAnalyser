@@ -3,14 +3,16 @@ import { SongSearchResult } from '../interfaces/interfaces';
 
 interface Props {
     result: SongSearchResult;
+    onClick?: () => void;
 }
 
-export const SearchResult = ({result}: Props) => {
+export const SearchResult = ({result, onClick}: Props) => {
     
     return (
         <Link 
             className='link'
-            to={`/songLyrics/${result.id}`}>
+            to={`/songLyrics/${result.id}`}
+            onClick={onClick}>
             <div className="search-result">
                 <img src={result.albumArt}/>
                 

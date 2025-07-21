@@ -4,7 +4,7 @@ import { VaraText } from "../components/VaraText";
 import { SearchBar } from '../components/SearchBar';
 import { SearchResultsList } from '../components/SearchResultsList';
 import { Login } from "../components/Login";
-import { SpotifyAccessToken } from "../interfaces/interfaces";
+import { SpotifyAccessToken, SongSearchResult } from "../interfaces/interfaces";
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 import fire_icon from "../assets/fire_icon.png";
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ const serverUrl = import.meta.env.VITE_API_URL;
 const queryClient = new QueryClient();
 
 const SearchContent = () => {
-    const [results, setResults] = useState([]);
+    const [results, setResults] = useState<SongSearchResult[]>([]);
     const [token, setToken] = useState<SpotifyAccessToken | null>(null);
     const [hasToken, setHasToken] = useState(false);
 
