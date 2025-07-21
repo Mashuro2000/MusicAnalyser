@@ -2,10 +2,12 @@
 
 A sophisticated React web application that analyzes song lyrics to identify rhyme schemes and interpret the deeper meaning behind songs. This tool helps music enthusiasts, songwriters, and students better understand the structural and thematic elements of songs.
 
-A live version can be viewed on: https://music-analyser-peach.vercel.app/
+A live version can be viewed on: https://musicwiser.com
 
-![Capture](https://github.com/user-attachments/assets/6b0e9c2b-a14e-476b-9615-1d06c0e7e9a1)
-![songl lyrics](https://github.com/user-attachments/assets/f45d7e05-764b-4588-b485-cf9584353d3d)
+![homepage](https://github.com/user-attachments/assets/303a97b9-e70d-412d-9c76-e8dce76143f7)
+![lyrics](https://github.com/user-attachments/assets/63443e94-7bb8-44d1-8419-b6960dc58660)
+![about page](https://github.com/user-attachments/assets/4961d601-209a-4be5-a59c-55c2bc60a4f4)
+
 
 ## Features
 
@@ -13,7 +15,7 @@ A live version can be viewed on: https://music-analyser-peach.vercel.app/
 - **Rhyme Scheme Detection**: Automatically identifies and highlights rhyme patterns in songs
 - **Spotify Account Integration**: Allows you to play the song you are currently viewing
 - **User-Friendly Interface**: Clean and intuitive design for easy navigation
-- **Real-time Analysis**: Get instant results as you input lyrics
+- **Most Viewed Songs Availavle** Shows the most searched songs that people have searched
 
 ## Installation
 
@@ -36,13 +38,12 @@ npm start
 ## Usage
 
 1. Open the application in your web browser
-2. Enter or paste song lyrics into the input field
-3. Click "Analyze" to process the lyrics
+2. Enter the song you wish to see
+3. Select the desired song in the search result list to process the lyrics
 4. View the detailed analysis including:
    - Rhyme scheme visualization
-   - Theme interpretation
    - Literary devices used
-   - Song structure breakdown
+   - Option for Spotify listening
 
 ## Technologies Used
 
